@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rucky.js</title>
+  <link rel="stylesheet" href="/public/style.css" />
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="module" src="/app/main.js"></script>
+  <script>
+let lastTime = 0;
+
+async function checkReload() {
+  const res = await fetch("/__reload");
+  const data = await res.json();
+
+  if (lastTime && data.time !== lastTime) {
+    location.reload();
+  }
+
+  lastTime = data.time;
+}
+
+// cek tiap 1 detik
+setInterval(checkReload, 1000);
+</script>
+</body>
+</html>
