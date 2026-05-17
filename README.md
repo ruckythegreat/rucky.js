@@ -1,1 +1,1 @@
-![Preview](1.jpg)
+![Preview](hero(1).png)
